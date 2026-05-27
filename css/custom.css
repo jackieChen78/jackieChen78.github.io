@@ -28,18 +28,44 @@ body {
 
 /* ========== 首页顶部区域 ========== */
 #page-header {
-  background-attachment: fixed !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
 
 #page-header #site-title {
   font-weight: 700;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 #page-header #site-subtitle {
   font-weight: 300;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 文章页面不显示顶部背景图 */
+.post #page-header {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+.post #page-header #site-title {
+  text-shadow: none;
+  color: #1e293b;
+}
+
+.post #page-header #site-subtitle {
+  text-shadow: none;
+  color: #64748b;
+}
+
+[data-theme='dark'] .post #page-header #site-title {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .post #page-header #site-subtitle {
+  color: #94a3b8;
 }
 
 /* ========== 文章卡片优化 ========== */
