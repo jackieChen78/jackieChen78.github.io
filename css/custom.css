@@ -518,11 +518,17 @@ html {
 }
 
 /* ========== 音乐播放按钮 ========== */
+/* 放在 rightside 设置面板内 */
+.rightside-config-hide .music-toggle-btn,
+#rightside-config-hide .music-toggle-btn {
+  margin-top: 12px !important;
+}
+
 .music-toggle-btn {
   position: relative;
   z-index: 999;
-  width: 40px !important;
-  height: 40px !important;
+  width: 32px !important;
+  height: 32px !important;
   border-radius: 50% !important;
   background: rgba(168, 85, 247, 0.12) !important;
   border: 1px solid rgba(168, 85, 247, 0.25) !important;
@@ -532,7 +538,6 @@ html {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #a855f7;
-  margin-bottom: 8px;
   padding: 0 !important;
   font-size: 0;
 }

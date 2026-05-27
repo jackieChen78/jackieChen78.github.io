@@ -25,7 +25,7 @@
 
     var btn = document.createElement('div');
     btn.id = 'music-toggle';
-    btn.className = 'music-toggle-btn';
+    btn.className = 'music-toggle-btn rightside-icon';
     btn.innerHTML = ICON_PLAY;
     btn.title = '播放音乐';
     btn.setAttribute('role', 'button');
@@ -36,17 +36,22 @@
       togglePlay();
     });
 
-    // 插入到回到顶部按钮旁边
-    var goUp = document.getElementById('go-up');
-    if (goUp && goUp.parentNode) {
-      goUp.parentNode.insertBefore(btn, goUp);
+    // 插入到设置面板 (#rightside-config-hide) 内部，#hide-aside-btn 之后
+    var rightsideHide = document.getElementById('rightside-config-hide');
+    if (rightsideHide) {
+      rightsideHide.appendChild(btn);
     } else {
-      // fallback: 放到右下角
-      btn.style.position = 'fixed';
-      btn.style.right = '30px';
-      btn.style.bottom = '90px';
-      btn.style.top = 'auto';
-      document.body.appendChild(btn);
+      // fallback: 插入到回到顶部按钮之前
+      var goUp = document.getElementById('go-up');
+      if (goUp && goUp.parentNode) {
+        goUp.parentNode.insertBefore(btn, goUp);
+      } else {
+        btn.style.position = 'fixed';
+        btn.style.right = '30px';
+        btn.style.bottom = '90px';
+        btn.style.top = 'auto';
+        document.body.appendChild(btn);
+      }
     }
   }
 

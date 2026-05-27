@@ -10,7 +10,8 @@
   let asideHidden = false;
 
   function isAsideHidden() {
-    return document.body.classList.contains('hide-aside') || asideHidden;
+    // Butterfly 主题在 <html> 上 toggle hide-aside class
+    return document.documentElement.classList.contains('hide-aside') || document.body.classList.contains('hide-aside') || asideHidden;
   }
 
   function buildFooterBlocks() {
@@ -103,14 +104,16 @@
       }
     });
 
-    // 观察 body class 变化
+    // 观察 <html> class 变化（Butterfly 主题在 documentElement 上 toggle hide-aside）
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    // 同时观察 body（兼容其他情况）
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     // 也监听按钮点击（兼容）
     const hideAsideBtn = document.querySelector('#hide-aside-btn');
     if (hideAsideBtn) {
       hideAsideBtn.addEventListener('click', function() {
-        setTimeout(updateFooterBlocksVisibility, 100);
+        setTimeout(updateFooterBlocksVisibility, 150);
       });
     }
   }
