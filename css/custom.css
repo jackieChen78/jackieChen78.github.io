@@ -5,25 +5,33 @@
 /* 全局字体优化 */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #1a1025;
+  color: #e2e8f0;
+}
+
+/* 主内容区域深色适配 */
+#content-inner,
+#page {
+  background: transparent !important;
 }
 
 /* ========== 导航栏毛玻璃效果 ========== */
 #nav {
-  background: rgba(255, 255, 255, 0.80) !important;
+  background: rgba(26, 16, 37, 0.85) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.1) !important;
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.15) !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 #nav .site-name,
 #nav .menus_item a {
-  color: #1e293b !important;
+  color: #e2e8f0 !important;
   font-weight: 500;
 }
 
 #nav .menus_item a:hover {
-  color: #6366f1 !important;
+  color: #c084fc !important;
 }
 
 /* ========== 首页顶部区域 ========== */
@@ -36,12 +44,17 @@ body {
 #page-header #site-title {
   font-weight: 700;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 #page-header #site-subtitle {
   font-weight: 300;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 顶部遮罩渐变，让背景图与页面背景自然融合 */
+#page-header::before {
+  background: linear-gradient(to bottom, transparent 40%, #1a1025 100%) !important;
 }
 
 /* 文章页面不显示顶部背景图 */
@@ -50,83 +63,156 @@ body {
   background: transparent !important;
 }
 
+.post #page-header::before {
+  display: none !important;
+}
+
 .post #page-header #site-title {
   text-shadow: none;
-  color: #1e293b;
+  color: #e2e8f0;
 }
 
 .post #page-header #site-subtitle {
   text-shadow: none;
-  color: #64748b;
-}
-
-[data-theme='dark'] .post #page-header #site-title {
-  color: #e2e8f0;
-}
-
-[data-theme='dark'] .post #page-header #site-subtitle {
   color: #94a3b8;
 }
 
+/* ========== 侧边栏隐藏底部四个区块 ========== */
+#aside-content .card-categories,
+#aside-content .card-tags,
+#aside-content .card-archives,
+#aside-content .card-webinfo {
+  display: none !important;
+}
+
 /* ========== 文章卡片优化 ========== */
-.post-card-content,
-.article-sort-item,
 #recent-posts .recent-post-item {
   border-radius: 16px !important;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: rgba(30, 20, 50, 0.8) !important;
+  border: 1px solid rgba(192, 132, 252, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 #recent-posts .recent-post-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 48px rgba(192, 132, 252, 0.2) !important;
+  border-color: rgba(192, 132, 252, 0.3) !important;
+}
+
+/* 文章卡片封面图悬停放大 */
+#recent-posts .recent-post-item .post_cover img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#recent-posts .recent-post-item:hover .post_cover img {
+  transform: scale(1.08) !important;
+}
+
+/* 文章卡片文字颜色 */
+#recent-posts .recent-post-item .post-title a {
+  color: #e2e8f0 !important;
+  transition: color 0.3s;
+}
+
+#recent-posts .recent-post-item .post-title a:hover {
+  color: #c084fc !important;
+}
+
+#recent-posts .recent-post-item .post-meta,
+#recent-posts .recent-post-item .post-content {
+  color: #94a3b8 !important;
 }
 
 /* ========== 侧边栏卡片优化 ========== */
 #aside-content .card-widget {
   border-radius: 16px !important;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.85) !important;
-  border: 1px solid rgba(99, 102, 241, 0.08) !important;
-  transition: all 0.3s ease;
+  background: rgba(30, 20, 50, 0.8) !important;
+  border: 1px solid rgba(192, 132, 252, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 #aside-content .card-widget:hover {
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 12px 40px rgba(192, 132, 252, 0.15) !important;
+  border-color: rgba(192, 132, 252, 0.25) !important;
+  background: rgba(30, 20, 50, 0.92) !important;
 }
 
 /* ========== 侧边栏个人信息 ========== */
 #aside-content .card-info .card-info-data > .card-info-data-item a:first-child {
-  color: #6366f1;
+  color: #c084fc;
+}
+
+#aside-content .card-info .card-info-social-icons .social-icon {
+  transition: all 0.3s ease !important;
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon:hover {
-  color: #6366f1 !important;
+  color: #c084fc !important;
+  transform: scale(1.2) !important;
+}
+
+/* 头像悬停旋转 */
+#aside-content .card-info img {
+  transition: all 0.5s ease !important;
+}
+
+#aside-content .card-info img:hover {
+  transform: rotate(360deg) scale(1.1) !important;
 }
 
 /* ========== 公告区域 ========== */
 #aside-content .card-announcement .item-headline i {
-  color: #6366f1;
+  color: #c084fc;
 }
 
 #aside-content .card-announcement .announcement_content {
-  color: #64748b;
+  color: #94a3b8;
   line-height: 1.8;
 }
 
+/* ========== 最新文章侧边栏 ========== */
+#aside-content .card-recent-post .recent-post-item {
+  transition: all 0.3s ease !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+}
+
+#aside-content .card-recent-post .recent-post-item:hover {
+  background: rgba(192, 132, 252, 0.08) !important;
+  transform: translateX(4px) !important;
+}
+
+#aside-content .card-recent-post .recent-post-item .post-title a {
+  color: #cbd5e1 !important;
+  transition: color 0.2s;
+}
+
+#aside-content .card-recent-post .recent-post-item:hover .post-title a {
+  color: #c084fc !important;
+}
+
 /* ========== 标签和分类 ========== */
+#aside-content .card-tags .card-tag-list a {
+  transition: all 0.3s ease !important;
+}
+
 #aside-content .card-tags .card-tag-list a:hover {
-  color: #6366f1 !important;
+  color: #c084fc !important;
+  transform: scale(1.1) !important;
 }
 
 #aside-content .card-categories ul .card-category-list-item:hover .card-category-list-name {
-  color: #6366f1 !important;
+  color: #c084fc !important;
 }
 
 /* ========== 文章页面优化 ========== */
 #article-container {
   font-size: 16px;
   line-height: 1.8;
+  color: #e2e8f0;
 }
 
 #article-container h1,
@@ -134,27 +220,28 @@ body {
 #article-container h3 {
   font-weight: 600;
   letter-spacing: -0.3px;
+  color: #f1f5f9;
 }
 
 #article-container h2 {
-  border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+  border-bottom: 2px solid rgba(192, 132, 252, 0.2);
   padding-bottom: 8px;
 }
 
 #article-container h2:before {
-  color: #6366f1;
+  color: #c084fc;
 }
 
 /* 链接样式 */
 #article-container a {
-  color: #6366f1;
+  color: #c084fc;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s;
 }
 
 #article-container a:hover {
-  border-bottom-color: #6366f1;
+  border-bottom-color: #c084fc;
 }
 
 /* 代码块优化 */
@@ -165,11 +252,12 @@ body {
 
 #article-container pre {
   border-radius: 12px !important;
+  background: rgba(15, 10, 25, 0.9) !important;
 }
 
 #article-container :not(pre) > code {
-  background: rgba(99, 102, 241, 0.08) !important;
-  color: #6366f1 !important;
+  background: rgba(192, 132, 252, 0.12) !important;
+  color: #c084fc !important;
   padding: 2px 8px !important;
   border-radius: 6px !important;
   font-size: 0.875em;
@@ -177,10 +265,11 @@ body {
 
 /* 引用块优化 */
 #article-container blockquote {
-  border-left: 4px solid #6366f1;
-  background: rgba(99, 102, 241, 0.05) !important;
+  border-left: 4px solid #c084fc;
+  background: rgba(192, 132, 252, 0.06) !important;
   border-radius: 0 12px 12px 0;
   padding: 16px 20px !important;
+  color: #cbd5e1;
 }
 
 /* 表格优化 */
@@ -190,8 +279,12 @@ body {
 }
 
 #article-container table th {
-  background: rgba(99, 102, 241, 0.08);
-  color: #6366f1;
+  background: rgba(192, 132, 252, 0.1);
+  color: #c084fc;
+}
+
+#article-container table td {
+  border-color: rgba(192, 132, 252, 0.08);
 }
 
 /* ========== 滚动条美化 ========== */
@@ -205,62 +298,63 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(192, 132, 252, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(192, 132, 252, 0.5);
 }
 
 /* ========== 按钮和交互元素 ========== */
 #pagination .page-number.current {
-  background: #6366f1 !important;
+  background: #c084fc !important;
 }
 
 #pagination a:hover {
-  color: #6366f1 !important;
+  color: #c084fc !important;
 }
 
 /* ========== TOC 目录 ========== */
+#aside-content #card-toc .toc-content .toc-link {
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
 #aside-content #card-toc .toc-content .toc-link:hover {
-  color: #6366f1 !important;
+  color: #c084fc !important;
+  transform: translateX(4px);
+}
+
+#aside-content #card-toc .toc-content .toc-link.active {
+  color: #c084fc !important;
 }
 
 /* ========== 回到顶部 ========== */
+#go-up {
+  transition: all 0.3s ease !important;
+}
+
 #go-up:hover {
-  background: #6366f1 !important;
+  background: #c084fc !important;
+  transform: translateY(-4px) !important;
 }
 
 /* ========== 页脚 ========== */
 #footer {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(26, 16, 37, 0.8);
   backdrop-filter: blur(10px);
+  color: #94a3b8;
 }
 
 #footer a:hover {
-  color: #6366f1 !important;
+  color: #c084fc !important;
 }
 
-/* ========== 响应式优化 ========== */
-@media (max-width: 768px) {
-  #aside-content .card-widget {
-    border-radius: 12px !important;
-  }
-  
-  #recent-posts .recent-post-item {
-    border-radius: 12px !important;
-  }
-  
-  .post-card-content {
-    border-radius: 12px !important;
-  }
-}
-
-/* ========== selection 选中文字颜色 ========== */
+/* ========== 选中文字颜色 ========== */
 ::selection {
-  background: rgba(99, 102, 241, 0.2);
-  color: #6366f1;
+  background: rgba(192, 132, 252, 0.3);
+  color: #e2e8f0;
 }
 
 /* ========== 页面过渡平滑 ========== */
@@ -268,10 +362,124 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ========== 暗色模式适配 ========== */
+/* ========== 底部横向区块样式 ========== */
+.footer-blocks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto 30px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-blocks .fb-item {
+  background: rgba(30, 20, 50, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px 20px;
+  border: 1px solid rgba(192, 132, 252, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.footer-blocks .fb-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(192, 132, 252, 0.2);
+  border-color: rgba(192, 132, 252, 0.3);
+  background: rgba(30, 20, 50, 0.92);
+}
+
+.footer-blocks .fb-item .fb-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.footer-blocks .fb-item .fb-title i {
+  color: #c084fc;
+}
+
+.footer-blocks .fb-item .fb-content {
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-blocks .fb-item .fb-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-blocks .fb-item .fb-content ul li {
+  padding: 4px 0;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.footer-blocks .fb-item .fb-content ul li a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-blocks .fb-item .fb-content ul li:hover {
+  transform: translateX(4px);
+}
+
+.footer-blocks .fb-item .fb-content ul li a:hover {
+  color: #c084fc;
+}
+
+.footer-blocks .fb-item .fb-content .fb-num {
+  font-size: 24px;
+  font-weight: 700;
+  color: #c084fc;
+  display: block;
+  margin: 8px 0;
+}
+
+/* 标签云在底部区块中的样式 */
+.footer-blocks .fb-tags .fb-content a {
+  display: inline-block;
+  padding: 2px 10px;
+  margin: 3px;
+  border-radius: 8px;
+  background: rgba(192, 132, 252, 0.08);
+  border: 1px solid rgba(192, 132, 252, 0.12);
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.footer-blocks .fb-tags .fb-content a:hover {
+  background: rgba(192, 132, 252, 0.18);
+  border-color: rgba(192, 132, 252, 0.3);
+  color: #c084fc !important;
+  transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .footer-blocks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-blocks {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== 暗色模式（已经是深色主题，保持一致） ========== */
 [data-theme='dark'] #nav {
-  background: rgba(15, 23, 42, 0.85) !important;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
+  background: rgba(15, 10, 25, 0.9) !important;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.2) !important;
 }
 
 [data-theme='dark'] #nav .site-name,
@@ -280,14 +488,31 @@ html {
 }
 
 [data-theme='dark'] #aside-content .card-widget {
-  background: rgba(15, 23, 42, 0.85) !important;
-  border: 1px solid rgba(99, 102, 241, 0.1) !important;
+  background: rgba(20, 12, 35, 0.85) !important;
+  border: 1px solid rgba(192, 132, 252, 0.12) !important;
+}
+
+[data-theme='dark'] #aside-content .card-widget:hover {
+  border-color: rgba(192, 132, 252, 0.3) !important;
+  background: rgba(20, 12, 35, 0.92) !important;
+  box-shadow: 0 12px 40px rgba(192, 132, 252, 0.2) !important;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.4);
+  background: rgba(192, 132, 252, 0.4);
 }
 
 [data-theme='dark'] #footer {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(15, 10, 25, 0.8);
+}
+
+[data-theme='dark'] .footer-blocks .fb-item {
+  background: rgba(20, 12, 35, 0.85);
+  border-color: rgba(192, 132, 252, 0.12);
+}
+
+[data-theme='dark'] .footer-blocks .fb-item:hover {
+  background: rgba(20, 12, 35, 0.92);
+  border-color: rgba(192, 132, 252, 0.3);
+  box-shadow: 0 16px 48px rgba(192, 132, 252, 0.2);
 }
