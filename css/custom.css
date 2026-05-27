@@ -517,6 +517,54 @@ html {
   color: #c084fc !important;
 }
 
+/* ========== 音乐播放按钮 ========== */
+.music-toggle-btn {
+  position: relative;
+  z-index: 999;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(168, 85, 247, 0.12) !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #a855f7;
+  margin-bottom: 8px;
+  padding: 0 !important;
+  font-size: 0;
+}
+
+.music-toggle-btn:hover {
+  background: rgba(168, 85, 247, 0.2) !important;
+  border-color: rgba(168, 85, 247, 0.5) !important;
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+}
+
+.music-toggle-btn.playing {
+  background: rgba(168, 85, 247, 0.18) !important;
+  border-color: #a855f7 !important;
+  animation: musicPulse 2s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(168, 85, 247, 0); }
+}
+
+[data-theme='dark'] .music-toggle-btn {
+  background: rgba(168, 85, 247, 0.15) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+[data-theme='dark'] .music-toggle-btn:hover {
+  background: rgba(168, 85, 247, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+}
+
 /* ========== 暗色模式（保持一致风格） ========== */
 [data-theme='dark'] body {
   background: #1a1025;
