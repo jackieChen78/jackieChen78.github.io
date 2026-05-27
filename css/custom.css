@@ -368,51 +368,54 @@ html {
 .footer-blocks {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 40px auto 30px;
-  padding: 0 20px;
+  gap: 16px;
+  width: 100%;
+  margin: 30px 0 20px;
+  padding: 0 24px;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .footer-blocks .fb-item {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 24px 20px;
+  border-radius: 12px;
+  padding: 16px 20px;
   border: 1px solid rgba(168, 85, 247, 0.08);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
+  min-height: 0;
 }
 
 .footer-blocks .fb-item:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.15);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.12);
   border-color: rgba(168, 85, 247, 0.25);
   background: rgba(255, 255, 255, 0.97);
 }
 
 .footer-blocks .fb-item .fb-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: #1e293b;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .footer-blocks .fb-item .fb-title i {
   color: #a855f7;
+  font-size: 14px;
 }
 
 .footer-blocks .fb-item .fb-content {
   color: #64748b;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .footer-blocks .fb-item .fb-content ul {
@@ -422,7 +425,7 @@ html {
 }
 
 .footer-blocks .fb-item .fb-content ul li {
-  padding: 4px 0;
+  padding: 2px 0;
   transition: transform 0.2s, color 0.2s;
 }
 
@@ -441,23 +444,23 @@ html {
 }
 
 .footer-blocks .fb-item .fb-content .fb-num {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: #a855f7;
   display: block;
-  margin: 8px 0;
+  margin: 4px 0;
 }
 
 /* 标签云在底部区块中的样式 */
 .footer-blocks .fb-tags .fb-content a {
   display: inline-block;
-  padding: 2px 10px;
-  margin: 3px;
-  border-radius: 8px;
+  padding: 1px 8px;
+  margin: 2px;
+  border-radius: 6px;
   background: rgba(168, 85, 247, 0.05);
   border: 1px solid rgba(168, 85, 247, 0.1);
   transition: all 0.3s ease;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .footer-blocks .fb-tags .fb-content a:hover {
@@ -477,6 +480,41 @@ html {
   .footer-blocks {
     grid-template-columns: 1fr;
   }
+}
+
+/* 暗色模式底部区块 */
+[data-theme='dark'] .footer-blocks .fb-item {
+  background: rgba(30, 20, 50, 0.85);
+  border-color: rgba(168, 85, 247, 0.12);
+}
+
+[data-theme='dark'] .footer-blocks .fb-item:hover {
+  background: rgba(30, 20, 50, 0.92);
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.2);
+}
+
+[data-theme='dark'] .footer-blocks .fb-item .fb-title {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .footer-blocks .fb-item .fb-content {
+  color: #94a3b8;
+}
+
+[data-theme='dark'] .footer-blocks .fb-item .fb-content ul li a {
+  color: #94a3b8;
+}
+
+[data-theme='dark'] .footer-blocks .fb-tags .fb-content a {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.12);
+}
+
+[data-theme='dark'] .footer-blocks .fb-tags .fb-content a:hover {
+  background: rgba(168, 85, 247, 0.18);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #c084fc !important;
 }
 
 /* ========== 暗色模式（保持一致风格） ========== */
@@ -579,40 +617,6 @@ html {
 [data-theme='dark'] #footer {
   background: rgba(26, 16, 37, 0.8);
   color: #94a3b8;
-}
-
-[data-theme='dark'] .footer-blocks .fb-item {
-  background: rgba(30, 20, 50, 0.85);
-  border-color: rgba(168, 85, 247, 0.12);
-}
-
-[data-theme='dark'] .footer-blocks .fb-item:hover {
-  background: rgba(30, 20, 50, 0.92);
-  border-color: rgba(168, 85, 247, 0.3);
-  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.2);
-}
-
-[data-theme='dark'] .footer-blocks .fb-item .fb-title {
-  color: #e2e8f0;
-}
-
-[data-theme='dark'] .footer-blocks .fb-item .fb-content {
-  color: #94a3b8;
-}
-
-[data-theme='dark'] .footer-blocks .fb-item .fb-content ul li a {
-  color: #94a3b8;
-}
-
-[data-theme='dark'] .footer-blocks .fb-tags .fb-content a {
-  background: rgba(168, 85, 247, 0.08);
-  border-color: rgba(168, 85, 247, 0.12);
-}
-
-[data-theme='dark'] .footer-blocks .fb-tags .fb-content a:hover {
-  background: rgba(168, 85, 247, 0.18);
-  border-color: rgba(168, 85, 247, 0.3);
-  color: #c084fc !important;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {

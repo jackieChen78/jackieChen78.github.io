@@ -1,9 +1,17 @@
 /**
  * 底部横向区块：分类 / 标签 / 归档 / 网站信息
  * 将这四个从侧边栏移到底部，横向排列
+ * 单栏模式（hideAside）下自动隐藏
  */
 (function () {
   'use strict';
+
+  // 标记是否已被用户手动切换隐藏
+  let asideHidden = false;
+
+  function isAsideHidden() {
+    return document.body.classList.contains('hide-aside') || asideHidden;
+  }
 
   function buildFooterBlocks() {
     // 只在首页显示
@@ -76,13 +84,53 @@
     }
   }
 
+  // 切换底部区块显示/隐藏
+  function updateFooterBlocksVisibility() {
+    const container = document.querySelector('.footer-blocks');
+    if (container) {
+      container.style.display = isAsideHidden() ? 'none' : '';
+    }
+  }
+
+  // 监听 aside 切换事件（Butterfly 主题在切换单栏/双栏时会触发）
+  function setupAsideListener() {
+    // Butterfly 的 hideAside 按钮触发的是 body class 变化
+    const observer = new MutationObserver(function(mutations) {
+      for (const m of mutations) {
+        if (m.type === 'attributes' && m.attributeName === 'class') {
+          updateFooterBlocksVisibility();
+        }
+      }
+    });
+
+    // 观察 body class 变化
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    // 也监听按钮点击（兼容）
+    const hideAsideBtn = document.querySelector('#hide-aside-btn');
+    if (hideAsideBtn) {
+      hideAsideBtn.addEventListener('click', function() {
+        setTimeout(updateFooterBlocksVisibility, 100);
+      });
+    }
+  }
+
   // DOM ready 后执行
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildFooterBlocks);
-  } else {
+  function init() {
     buildFooterBlocks();
+    setupAsideListener();
+    // 初始检查
+    setTimeout(updateFooterBlocksVisibility, 300);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 
   // 支持 pjax 重载
-  document.addEventListener('pjax:complete', buildFooterBlocks);
+  document.addEventListener('pjax:complete', function() {
+    setTimeout(init, 100);
+  });
 })();
