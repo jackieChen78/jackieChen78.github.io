@@ -1,0 +1,267 @@
+/* ============================================
+   Jackie's Blog - Custom Styles
+   ============================================ */
+
+/* 全局字体优化 */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* ========== 导航栏毛玻璃效果 ========== */
+#nav {
+  background: rgba(255, 255, 255, 0.80) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1) !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+#nav .site-name,
+#nav .menus_item a {
+  color: #1e293b !important;
+  font-weight: 500;
+}
+
+#nav .menus_item a:hover {
+  color: #6366f1 !important;
+}
+
+/* ========== 首页顶部区域 ========== */
+#page-header {
+  background-attachment: fixed !important;
+}
+
+#page-header #site-title {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+#page-header #site-subtitle {
+  font-weight: 300;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== 文章卡片优化 ========== */
+.post-card-content,
+.article-sort-item,
+#recent-posts .recent-post-item {
+  border-radius: 16px !important;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#recent-posts .recent-post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* ========== 侧边栏卡片优化 ========== */
+#aside-content .card-widget {
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(99, 102, 241, 0.08) !important;
+  transition: all 0.3s ease;
+}
+
+#aside-content .card-widget:hover {
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* ========== 侧边栏个人信息 ========== */
+#aside-content .card-info .card-info-data > .card-info-data-item a:first-child {
+  color: #6366f1;
+}
+
+#aside-content .card-info .card-info-social-icons .social-icon:hover {
+  color: #6366f1 !important;
+}
+
+/* ========== 公告区域 ========== */
+#aside-content .card-announcement .item-headline i {
+  color: #6366f1;
+}
+
+#aside-content .card-announcement .announcement_content {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+/* ========== 标签和分类 ========== */
+#aside-content .card-tags .card-tag-list a:hover {
+  color: #6366f1 !important;
+}
+
+#aside-content .card-categories ul .card-category-list-item:hover .card-category-list-name {
+  color: #6366f1 !important;
+}
+
+/* ========== 文章页面优化 ========== */
+#article-container {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+#article-container h1,
+#article-container h2,
+#article-container h3 {
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+#article-container h2 {
+  border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+  padding-bottom: 8px;
+}
+
+#article-container h2:before {
+  color: #6366f1;
+}
+
+/* 链接样式 */
+#article-container a {
+  color: #6366f1;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+#article-container a:hover {
+  border-bottom-color: #6366f1;
+}
+
+/* 代码块优化 */
+#article-container pre,
+#article-container code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+#article-container pre {
+  border-radius: 12px !important;
+}
+
+#article-container :not(pre) > code {
+  background: rgba(99, 102, 241, 0.08) !important;
+  color: #6366f1 !important;
+  padding: 2px 8px !important;
+  border-radius: 6px !important;
+  font-size: 0.875em;
+}
+
+/* 引用块优化 */
+#article-container blockquote {
+  border-left: 4px solid #6366f1;
+  background: rgba(99, 102, 241, 0.05) !important;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px !important;
+}
+
+/* 表格优化 */
+#article-container table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#article-container table th {
+  background: rgba(99, 102, 241, 0.08);
+  color: #6366f1;
+}
+
+/* ========== 滚动条美化 ========== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
+/* ========== 按钮和交互元素 ========== */
+#pagination .page-number.current {
+  background: #6366f1 !important;
+}
+
+#pagination a:hover {
+  color: #6366f1 !important;
+}
+
+/* ========== TOC 目录 ========== */
+#aside-content #card-toc .toc-content .toc-link:hover {
+  color: #6366f1 !important;
+}
+
+/* ========== 回到顶部 ========== */
+#go-up:hover {
+  background: #6366f1 !important;
+}
+
+/* ========== 页脚 ========== */
+#footer {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+#footer a:hover {
+  color: #6366f1 !important;
+}
+
+/* ========== 响应式优化 ========== */
+@media (max-width: 768px) {
+  #aside-content .card-widget {
+    border-radius: 12px !important;
+  }
+  
+  #recent-posts .recent-post-item {
+    border-radius: 12px !important;
+  }
+  
+  .post-card-content {
+    border-radius: 12px !important;
+  }
+}
+
+/* ========== selection 选中文字颜色 ========== */
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+  color: #6366f1;
+}
+
+/* ========== 页面过渡平滑 ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== 暗色模式适配 ========== */
+[data-theme='dark'] #nav {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
+}
+
+[data-theme='dark'] #nav .site-name,
+[data-theme='dark'] #nav .menus_item a {
+  color: #e2e8f0 !important;
+}
+
+[data-theme='dark'] #aside-content .card-widget {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(99, 102, 241, 0.1) !important;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+[data-theme='dark'] #footer {
+  background: rgba(15, 23, 42, 0.7);
+}
